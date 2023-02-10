@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "936414356373",
+    "project_id": "derana-boarding",
+    "storage_bucket": "derana-boarding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936414356373:android:7ee3b7c659863b81504c9c",
+        "android_client_info": {
+          "package_name": "com.example.derana_boarding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936414356373-bug7140hphcj0h31d7mo0d9eoqs3com5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjaI841LcILm6QUTQfm-53PnFnDlYyLrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936414356373-bug7140hphcj0h31d7mo0d9eoqs3com5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
