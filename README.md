@@ -16,5 +16,5 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 Use this Sdk version for minor errors
-minSdkVersion 21
-targetSdkVersion 28
+- minSdkVersion 21
+- targetSdkVersion 28
