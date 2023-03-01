@@ -7,9 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp();  
-runApp(MyApp());
+  /*
+  use this method to initialize the futter widgets
+  otherwise we get a null error because firebase app 
+  initialize before flutter widget comes.
+  */
+  WidgetsFlutterBinding.ensureInitialized(); 
+  /*
+  initialize the firebase app 
+  */
+  await Firebase.initializeApp(); 
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,12 +26,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamProvider<User?>.value(
       value: AuthService().user,
-        initialData: null,
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: Wrapper(),
+      initialData: null,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Wrapper(),
       ),
-      
     );
   }
 }

@@ -62,93 +62,95 @@ class _SignInState extends State<SignIn> {
           //     }),
           child: Form(
             key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 100),
-                Text(
-                  "🏠 Derana Boarding House",
-                  style: Styles.headlineStyle3
-                      .copyWith(fontSize: 22.0, fontWeight: FontWeight.w300),
-                ),
-                Text(
-                  "Login to Your Profile",
-                  style: Styles.headlineStyle2.copyWith(fontSize: 38),
-                ),
-                const SizedBox(
-                  height: 44.0,
-                ),
-                TextFormField(
-                    decoration: textInputDecoration,
-                    validator: (val) => val!.isEmpty ? 'Enter an email' : null,
-                    onChanged: (val) {
-                      setState(() => email = val);
-                    }),
-                SizedBox(height: 20),
-                TextFormField(
-                    decoration: textInputDecoration.copyWith(
-                        prefixIcon: Icon(
-                          FluentSystemIcons.ic_fluent_lock_regular,
-                          color: Colors.black,
-                        ),
-                        hintText: "Password"),
-                    validator: (val) => val!.length < 6
-                        ? 'Enter a password 6+ chars long'
-                        : null,
-                    obscureText: true,
-                    onChanged: (val) {
-                      setState(() => password = val);
-                    }),
-                SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  "Don't Remember your Password?",
-                  style: TextStyle(color: Colors.blue),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  child: const Text(
-                    "Sign in",
-                    style: TextStyle(color: Colors.white),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(height: 100),
+                  Text(
+                    "🏠 Derana Boarding House",
+                    style: Styles.headlineStyle3
+                        .copyWith(fontSize: 22.0, fontWeight: FontWeight.w300),
                   ),
-                  onPressed: () async {
-                    // print(email);
-                    // print(password);
-                    if (_formKey.currentState!.validate()) {
-                      setState(() {
-                        loading = true;
-                      });
-                      dynamic result = await _auth.signInWithEmailAndPassword(
-                          email, password);
-                      if (result == null) {
+                  Text(
+                    "Login to Your Profile",
+                    style: Styles.headlineStyle2.copyWith(fontSize: 38),
+                  ),
+                  const SizedBox(
+                    height: 44.0,
+                  ),
+                  TextFormField(
+                      decoration: textInputDecoration,
+                      validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                      onChanged: (val) {
+                        setState(() => email = val);
+                      }),
+                  SizedBox(height: 20),
+                  TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                          prefixIcon: Icon(
+                            FluentSystemIcons.ic_fluent_lock_regular,
+                            color: Colors.black,
+                          ),
+                          hintText: "Password"),
+                      validator: (val) => val!.length < 6
+                          ? 'Enter a password 6+ chars long'
+                          : null,
+                      obscureText: true,
+                      onChanged: (val) {
+                        setState(() => password = val);
+                      }),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "Don't Remember your Password?",
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    child: const Text(
+                      "Sign in",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () async {
+                      // print(email);
+                      // print(password);
+                      if (_formKey.currentState!.validate()) {
                         setState(() {
-                          error = 'Could not sign in with those credentials';
-                          loading = false;
+                          loading = true;
                         });
+                        dynamic result = await _auth.signInWithEmailAndPassword(
+                            email, password);
+                        if (result == null) {
+                          setState(() {
+                            error = 'Could not sign in with those credentials';
+                            loading = false;
+                          });
+                        }
                       }
-                    }
-                  },
-                  // Color: Colors.pink[400],
-                ),
-                SizedBox(height: 12.0),
-                Text(
-                  error,
-                  style: TextStyle(color: Colors.red, fontSize: 14.0),
-                ),
-                Row(
-                  children: [
-                    Text("Have not registered yet ?"),
-                    TextButton(
-                      onPressed: () {
-                        widget.toggleView();
-                      },
-                      child: Text('Register Now'),
-                    )
-                  ],
-                ),
-              ],
+                    },
+                    // Color: Colors.pink[400],
+                  ),
+                  SizedBox(height: 12.0),
+                  Text(
+                    error,
+                    style: TextStyle(color: Colors.red, fontSize: 14.0),
+                  ),
+                  Row(
+                    children: [
+                      Text("Have not registered yet ?"),
+                      TextButton(
+                        onPressed: () {
+                          widget.toggleView();
+                        },
+                        child: Text('Register Now'),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ));
